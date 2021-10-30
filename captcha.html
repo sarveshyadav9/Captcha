@@ -1,0 +1,90 @@
+<!Doctype html>
+<html>
+    <head>
+        <title>Captcha Page</title>
+        <style>
+             .div1{
+                 width:300px;
+                 height:400px;
+                 background-color: wheat;
+                 border-radius:5px;
+                
+             }
+        body{
+            background-color:whitesmoke;
+        }
+        .btn{
+            height: 30px;
+            width: 100px;
+            border: none;
+            background-color: rgba(255, 38, 0, 0.507);
+            border-radius:5px;
+        }
+        .btn:hover{
+            background-color: whitesmoke;
+
+        }
+        </style>
+
+    </head>
+
+
+    <body onload="captchaGenerator()">
+        <center>
+            
+            <div class="div1">
+                <fieldset>
+                    <legend>Captcha</legend>
+            <p>This question is for testing whether<br>
+              you are Human visitor and to<br> Prevent automated spam submission</p>
+              <br>
+              <input type="text" id="createcaptcha" disabled style="height: 50px;"><br>
+              <h5>What code in the image? *</h5>
+              <input type="text" id="inputcaptcha">
+              <h6><i>Enter the characters(without spaces)<br>shown in the image</i></h6>
+              <input type="button" class="btn" id="refresh" value="Refresh" onclick="captchaGenerator()">
+              <input type="button" class="btn" id="checkButton" value="Check" onclick="alert(isValid())">
+              </fieldset>
+            </div>
+        </center>
+
+
+
+        <script>
+        function captchaGenerator()
+ {
+    let alpha =new Array('A','B','C','D','E','a','b','c','e','f','g','h','u','w','t','q','o','r','t','p','1','2','3','4','5','6','7','8','9','0','F','G','H','I','J','K','L','M','N','O','P','Q','O','R','S','T','U','V','W','X','Y','Z','a','b','c','e','f','g','h','u','w','t','q','o','r','t','p','1','2','3','4','5','6','7','8','9',0);
+
+    let a=alpha[Math.floor(Math.random()*alpha.length)];
+    let b=alpha[Math.floor(Math.random()*alpha.length)];
+    let c=alpha[Math.floor(Math.random()*alpha.length)];
+    let d=alpha[Math.floor(Math.random()*alpha.length)];
+    let e=alpha[Math.floor(Math.random()*alpha.length)];
+    let f=alpha[Math.floor(Math.random()*alpha.length)];
+    let g=alpha[Math.floor(Math.random()*alpha.length)];
+
+    let results=a+"   "+b+"   "+c+"   "+d+"   "+e+"   "+f+"   "+g;
+    document.getElementById('createcaptcha').value=results;
+ }
+
+ function isValid(){
+     let one=removeSpaces(document.getElementById('createcaptcha').value);
+     let two=removeSpaces(document.getElementById('inputcaptcha').value);
+     if(one==two)
+     {
+         return true;
+     }
+     else{
+         return false;
+     }
+ }
+
+ function removeSpaces(s){
+     s.split("   ").join('');
+
+ }
+        </script>
+    </body>
+
+
+</html>
